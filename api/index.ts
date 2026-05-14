@@ -1,78 +1,54 @@
 import type { IncomingMessage, ServerResponse } from "http";
-import { consumeLastCapturedError } from "../src/lib/error-capture";
-import { renderErrorPage } from "../src/lib/error-page";
+import { readFileSync, existsSync } from "fs";
+import { join } from "path";
 
-type ServerEntry = {
-  fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
-};
-
-let serverEntryPromise: Promise<ServerEntry> | undefined;
-
-async function getServerEntry(): Promise<ServerEntry> {
-  if (!serverEntryPromise) {
-    serverEntryPromise = import("@tanstack/react-start/server-entry").then(
-      (m) => ((m as { default?: ServerEntry }).default ?? (m as unknown as ServerEntry)),
-    );
-  }
-  return serverEntryPromise;
-}
-
-function brandedErrorResponse(): string {
-  return renderErrorPage();
-}
-
-export default async function handler(
-  req: IncomingMessage & { url: string; method: string; headers: Record<string, any> },
+export default function handler(
+  req: IncomingMessage & { url: string },
   res: ServerResponse,
-): Promise<void> {
+): void {
   try {
-    const serverEntry = await getServerEntry();
-    
-    // Convert Node.js request to Fetch API Request
-    const url = new URL(req.url, `http://${req.headers.host}`);
-    const headers = new Headers();
-    Object.entries(req.headers).forEach(([key, value]) => {
-      if (typeof value === "string") {
-        headers.set(key, value);
-      } else if (Array.isArray(value)) {
-        headers.set(key, value.join(", "));
-      }
-    });
+    const url = new URL(req.url || "/", "http://localhost");
+    const pathname = url.pathname;
 
-    let body: BodyInit | undefined;
-    if (req.method !== "GET" && req.method !== "HEAD") {
-      const chunks: Buffer[] = [];
-      for await (const chunk of req as any) {
-        chunks.push(chunk);
+    // Serve static assets
+    if (pathname.startsWith("/assets/") || pathname === "/robots.txt") {
+      const filePath = join(process.cwd(), "dist/client", pathname);
+      if (existsSync(filePath)) {
+        const content = readFileSync(filePath);
+        res.setHeader("Content-Type", getContentType(pathname));
+        res.end(content);
+        return;
       }
-      body = Buffer.concat(chunks);
     }
 
-    const request = new Request(url, {
-      method: req.method,
-      headers,
-      body,
-    });
-
-    const response = await serverEntry.fetch(request, {}, {});
-
-    // Convert Fetch API Response to Node.js response
-    res.statusCode = response.status;
-    response.headers.forEach((value, key) => {
-      res.setHeader(key, value);
-    });
-
-    const buffer = await response.arrayBuffer();
-    res.end(Buffer.from(buffer));
-  } catch (e) {
-    console.error("Server error:", e);
-    const lastCapturedError = consumeLastCapturedError();
-    if (lastCapturedError) {
-      console.error("Last captured error:", lastCapturedError);
+    // Serve index.html for all other routes
+    const indexPath = join(process.cwd(), "dist/client", "index.html");
+    if (existsSync(indexPath)) {
+      const content = readFileSync(indexPath, "utf-8");
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.end(content);
+      return;
     }
+
+    res.statusCode = 404;
+    res.end("Not found");
+  } catch (error) {
+    console.error("Error:", error);
     res.statusCode = 500;
-    res.setHeader("content-type", "text/html; charset=utf-8");
-    res.end(brandedErrorResponse());
+    res.setHeader("Content-Type", "text/plain");
+    res.end("Internal server error");
   }
+}
+
+function getContentType(pathname: string): string {
+  if (pathname.endsWith(".js")) return "application/javascript";
+  if (pathname.endsWith(".css")) return "text/css";
+  if (pathname.endsWith(".png")) return "image/png";
+  if (pathname.endsWith(".jpg") || pathname.endsWith(".jpeg")) return "image/jpeg";
+  if (pathname.endsWith(".gif")) return "image/gif";
+  if (pathname.endsWith(".svg")) return "image/svg+xml";
+  if (pathname.endsWith(".json")) return "application/json";
+  if (pathname.endsWith(".txt")) return "text/plain";
+  return "application/octet-stream";
 }
 
