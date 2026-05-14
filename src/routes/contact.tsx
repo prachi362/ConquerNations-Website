@@ -17,9 +17,9 @@ export const Route = createFileRoute("/contact")({
 });
 
 const items = [
-  { icon: Phone, t: "Call us", v: "+1 (555) 010-2025", sub: "Mon–Fri, 7am–7pm PT" },
-  { icon: Mail, t: "Email", v: "hello@conquernation.com", sub: "We reply within a few hours" },
-  { icon: MapPin, t: "Visit", v: "1200 Harbor Way, Long Beach, CA", sub: "Tours by appointment" },
+  { icon: Phone, t: "Call us", v: "(310) 651-5555", sub: "Mon - Fri, 7am - 7pm PT" },
+  { icon: Mail, t: "Email", v: "info@conquernation.com", sub: "We reply within a few hours" },
+  { icon: MapPin, t: "Visit", v: "2651 E. 12th St., Los Angeles, CA 90023", sub: "Tours by appointment" },
   { icon: Clock, t: "Hours", v: "24 / 7 dispatch", sub: "Real humans on shift" },
 ];
 
@@ -53,7 +53,7 @@ function ContactPage() {
           {items.map((it, i) => (
             <Reveal key={it.t} delay={i * 80}>
               <a
-                href={it.t === "Call us" ? `tel:${it.v.replace(/\s/g, "")}` : it.t === "Email" ? `mailto:${it.v}` : "#"}
+                href={it.t === "Call us" ? `tel:+1${it.v.replace(/\D/g, "")}` : it.t === "Email" ? `mailto:${it.v}` : "#"}
                 className="group block h-full rounded-2xl border border-border bg-card p-7 hover-lift"
               >
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-primary text-primary-foreground shadow-soft transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">

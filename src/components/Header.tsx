@@ -37,7 +37,7 @@ export function Header() {
             <img
               src={logo}
               alt="Conquer Nation Logistics logo"
-              className="relative h-10 w-auto rounded-md bg-gradient-deep p-1.5 transition-transform duration-500 group-hover:scale-105"
+              className="relative h-14 w-auto rounded-md bg-gradient-deep p-1.5 transition-transform duration-500 group-hover:scale-105"
             />
           </div>
           <div className="hidden sm:block leading-tight">

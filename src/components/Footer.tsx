@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2 space-y-5">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="Conquer Nation logo" className="h-12 w-auto" />
+              <img src={logo} alt="Conquer Nation logo" className="h-16 w-auto" />
               <div>
                 <div className="text-lg font-semibold">Conquer Nation</div>
                 <div className="text-xs uppercase tracking-[0.2em] text-white/60">Logistics</div>
@@ -38,9 +38,9 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">Reach Us</h3>
             <ul className="space-y-3 text-white/85 text-sm">
-              <li className="flex items-start gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" /><span>+1 (555) 010-2025</span></li>
-              <li className="flex items-start gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" /><span>hello@conquernation.com</span></li>
-              <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" /><span>1200 Harbor Way, Long Beach, CA</span></li>
+              <li className="flex items-start gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" /><a href="tel:+13106515555" className="hover:text-white">(310) 651-5555</a></li>
+              <li className="flex items-start gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" /><a href="mailto:info@conquernation.com" className="hover:text-white">info@conquernation.com</a></li>
+              <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-glow" /><span>2651 E. 12th St., Los Angeles, CA 90023</span></li>
             </ul>
           </div>
         </div>

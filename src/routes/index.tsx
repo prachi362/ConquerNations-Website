@@ -22,12 +22,12 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { icon: PackageCheck, title: "Fulfillment", desc: "Pick, pack, and ship , accurately and on time, every time." },
-  { icon: Boxes, title: "Transloading", desc: "Seamlessly transfer freight between modes to cut delays and cost." },
-  { icon: Warehouse, title: "Warehousing", desc: "Short and long-term storage with real-time inventory visibility." },
-  { icon: Network, title: "3PL", desc: "End-to-end logistics partnership tailored to your supply chain." },
-  { icon: Ship, title: "Drayage", desc: "Port-to-warehouse moves handled with speed and certainty." },
-  { icon: Truck, title: "Transportation", desc: "Reliable nationwide trucking with live tracking from pickup to drop." },
+  { slug: "fulfillment", icon: PackageCheck, title: "Fulfillment", desc: "Pick, pack, and ship , accurately and on time, every time." },
+  { slug: "transloading", icon: Boxes, title: "Transloading", desc: "Seamlessly transfer freight between modes to cut delays and cost." },
+  { slug: "warehousing", icon: Warehouse, title: "Warehousing", desc: "Short and long-term storage with real-time inventory visibility." },
+  { slug: "3pl", icon: Network, title: "3PL", desc: "End-to-end logistics partnership tailored to your supply chain." },
+  { slug: "drayage", icon: Ship, title: "Drayage", desc: "Port-to-warehouse moves handled with speed and certainty." },
+  { slug: "transportation", icon: Truck, title: "Transportation", desc: "Reliable nationwide trucking with live tracking from pickup to drop." },
 ];
 
 const stats = [
@@ -147,7 +147,11 @@ function HomePage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Reveal key={s.title} delay={i * 80}>
-                <article className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-7 hover-lift">
+                <Link
+                  to="/services/$slug"
+                  params={{ slug: s.slug }}
+                  className="group relative block h-full overflow-hidden rounded-2xl border border-border bg-card p-7 hover-lift"
+                >
                   <div className="absolute inset-x-0 -top-px h-px bg-gradient-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-primary opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-30" />
                   <div className="relative">
@@ -156,11 +160,11 @@ function HomePage() {
                     </div>
                     <h3 className="mt-5 text-xl font-semibold">{s.title}</h3>
                     <p className="mt-2 text-muted-foreground leading-relaxed">{s.desc}</p>
-                    <div className="mt-6 inline-flex items-center text-sm font-semibold text-primary opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+                    <div className="mt-6 inline-flex items-center text-sm font-semibold text-primary transition-transform duration-500 group-hover:translate-x-1">
                       Learn more <ArrowRight className="ml-1 h-4 w-4" />
                     </div>
                   </div>
-                </article>
+                </Link>
               </Reveal>
             ))}
           </div>

@@ -137,8 +137,8 @@ function QuotePage() {
               <div className="rounded-3xl border border-border bg-card p-8">
                 <h3 className="text-lg font-semibold">Prefer to talk?</h3>
                 <p className="mt-2 text-muted-foreground">A real person picks up , even on weekends for urgent freight.</p>
-                <a href="tel:+15550102025" className="mt-4 inline-flex items-center gap-2 text-lg font-semibold text-primary underline-grow">
-                  +1 (555) 010-2025
+                <a href="tel:+13106515555" className="mt-4 inline-flex items-center gap-2 text-lg font-semibold text-primary underline-grow">
+                  (310) 651-5555
                 </a>
               </div>
             </aside>
