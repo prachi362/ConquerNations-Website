@@ -15,27 +15,27 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a2a5e] shadow-soft">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-        <Link to="/" className="flex items-center gap-3 group">
+    <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <Link to="/" className="flex items-center gap-4 group">
           <img
             src={logo}
             alt="Conquer Nation Logistics logo"
-            className="h-12 w-auto transition-transform duration-500 group-hover:scale-105 [filter:brightness(0)_invert(1)]"
+            className="h-20 w-auto sm:h-24 transition-transform duration-500 group-hover:scale-105 [filter:brightness(0)_invert(1)] drop-shadow-lg"
           />
-          <span className="hidden sm:block text-base font-semibold tracking-tight text-white">
+          <span className="hidden sm:block text-2xl font-semibold tracking-tight text-white drop-shadow-md">
             Conquer Nation
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
-          <nav className="flex items-center gap-7">
+        <div className="hidden md:flex items-center gap-10">
+          <nav className="flex items-center gap-9">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-sm font-medium text-white/85 hover:text-white transition-colors"
-                activeProps={{ className: "text-sm font-semibold text-white" }}
+                className="text-base font-medium text-white/90 hover:text-white transition-colors drop-shadow-md"
+                activeProps={{ className: "text-base font-semibold text-white drop-shadow-md" }}
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}

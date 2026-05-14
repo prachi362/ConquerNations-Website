@@ -40,7 +40,7 @@ function ServiceDetailPage() {
       <section className="relative overflow-hidden bg-gradient-deep text-primary-foreground">
         <div className="absolute inset-0 grid-pattern opacity-10" aria-hidden />
         <div className="absolute inset-0 bg-gradient-mesh opacity-30" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-28">
+        <div className="relative mx-auto max-w-7xl px-6 pt-40 pb-24 sm:pt-48 sm:pb-28">
           <Reveal>
             <Link
               to="/services"

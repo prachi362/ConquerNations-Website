@@ -31,7 +31,7 @@ function QuotePage() {
       <section className="relative overflow-hidden bg-gradient-deep text-primary-foreground">
         <div className="absolute inset-0 grid-pattern opacity-10" aria-hidden />
         <div className="absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-primary-glow opacity-25 blur-3xl" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 pt-24 pb-12 sm:pt-32">
+        <div className="relative mx-auto max-w-7xl px-6 pt-40 pb-12 sm:pt-48">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-glow">Get a quote</p>
           </Reveal>

@@ -33,7 +33,7 @@ function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-deep/70 via-deep/55 to-deep/85" />
           <div className="absolute inset-0 grid-pattern opacity-15" aria-hidden />
         </div>
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-28 text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-6 pt-40 pb-24 sm:pt-48 sm:pb-28 text-primary-foreground">
           <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
             <div>
               <Reveal>

@@ -37,7 +37,7 @@ function ServicesPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-deep/85 via-deep/70 to-deep/90" />
           <div className="absolute inset-0 grid-pattern opacity-15" aria-hidden />
         </div>
-        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32">
+        <div className="relative mx-auto max-w-7xl px-6 pt-40 pb-24 sm:pt-48 sm:pb-32">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-glow">Services</p>
           </Reveal>

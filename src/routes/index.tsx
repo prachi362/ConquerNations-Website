@@ -54,7 +54,7 @@ function HomePage() {
           <div className="absolute inset-0 grid-pattern opacity-20" aria-hidden />
         </div>
 
-        <div className="mx-auto max-w-7xl px-6 pt-28 pb-32 sm:pt-36 sm:pb-44">
+        <div className="mx-auto max-w-7xl px-6 pt-40 pb-32 sm:pt-48 sm:pb-44">
           <div className="max-w-3xl text-primary-foreground">
             <Reveal>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
