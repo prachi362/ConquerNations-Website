@@ -3,6 +3,7 @@ import { PageShell } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { QuoteButton } from "@/components/QuoteButton";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import heroImg from "@/assets/hero-warehouse.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -26,8 +27,12 @@ const items = [
 function ContactPage() {
   return (
     <PageShell>
-      <section className="relative overflow-hidden bg-gradient-deep text-primary-foreground">
-        <div className="absolute inset-0 grid-pattern opacity-10" aria-hidden />
+      <section className="relative isolate overflow-hidden text-primary-foreground">
+        <div className="absolute inset-0 -z-10">
+          <img src={heroImg} alt="" loading="lazy" className="h-full w-full object-cover scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-b from-deep/85 via-deep/70 to-deep/90" />
+          <div className="absolute inset-0 grid-pattern opacity-15" aria-hidden />
+        </div>
         <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-glow">Contact</p>
