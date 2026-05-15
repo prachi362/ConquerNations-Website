@@ -16,16 +16,13 @@ export function Header() {
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="flex w-full items-center justify-between px-6 py-4 sm:px-10">
         <Link to="/" className="flex items-center gap-4 group">
           <img
             src={logo}
             alt="Conquer Nation Logistics logo"
-            className="h-20 w-auto sm:h-24 transition-transform duration-500 group-hover:scale-105 [filter:brightness(0)_invert(1)] drop-shadow-lg"
+            className="h-28 w-auto sm:h-36 transition-transform duration-500 group-hover:scale-105 [filter:brightness(0)_invert(1)] drop-shadow-lg"
           />
-          <span className="hidden sm:block text-2xl font-semibold tracking-tight text-white drop-shadow-md">
-            Conquer Nation
-          </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-10">
@@ -34,15 +31,15 @@ export function Header() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-base font-medium text-white/90 hover:text-white transition-colors drop-shadow-md"
-                activeProps={{ className: "text-base font-semibold text-white drop-shadow-md" }}
+                className="text-lg font-medium text-white/90 hover:text-white transition-colors drop-shadow-md"
+                activeProps={{ className: "text-lg font-semibold text-white drop-shadow-md" }}
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-          <QuoteButton />
+          <QuoteButton className="!text-base !px-7 !py-3.5" />
         </div>
 
         <button

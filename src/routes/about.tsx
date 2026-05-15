@@ -3,7 +3,8 @@ import { PageShell } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 import { QuoteButton } from "@/components/QuoteButton";
 import port from "@/assets/port-containers.jpg";
-import { Heart, Compass, Sparkles, Users } from "lucide-react";
+import founder from "@/assets/founder.jpg";
+import { Heart, Compass, Sparkles, Users, Quote } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -124,7 +125,42 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="pb-24">
+      {/* FOUNDER */}
+      <section className="border-t border-border bg-muted/40 py-24 sm:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <Reveal>
+            <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr]">
+              <div className="relative mx-auto lg:mx-0">
+                <div className="absolute -inset-4 rounded-full bg-gradient-primary opacity-30 blur-3xl" aria-hidden />
+                <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-card shadow-deep sm:h-72 sm:w-72">
+                  <img
+                    src={founder}
+                    alt="Founder & CEO, Conquer Nation Inc."
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Leadership</p>
+                <h2 className="mt-3 text-4xl font-semibold sm:text-5xl">
+                  Meet the founder.
+                </h2>
+                <Quote className="mt-6 h-8 w-8 text-primary/40" />
+                <blockquote className="mt-3 text-lg text-foreground/90 leading-relaxed sm:text-xl">
+                  "We built Conquer Nation on a simple promise: pick up the phone, do what you said you'd do, and treat every load like it's your own. Twenty-five years later that's still the entire playbook."
+                </blockquote>
+                <div className="mt-6">
+                  <p className="text-lg font-semibold text-foreground">Founder &amp; CEO</p>
+                  <p className="text-sm text-muted-foreground">Conquer Nation Inc.</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="py-24">
         <div className="mx-auto max-w-5xl px-6">
           <Reveal>
             <div className="rounded-3xl bg-gradient-deep p-10 sm:p-14 text-center text-primary-foreground">

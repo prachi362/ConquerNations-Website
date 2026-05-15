@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Truck, Warehouse, Boxes, Ship, PackageCheck, Network,
   ShieldCheck, Clock, Globe2, ArrowRight, CheckCircle2,
+  MonitorCog, Wifi, Eye, KeyRound, Clock4, Quote, Star,
 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
@@ -37,6 +38,57 @@ const stats = [
   { v: "48", k: "States served" },
 ];
 
+const capabilities = [
+  { icon: MonitorCog, t: "Exceptional WMS & TMS", d: "Industry-leading warehouse and transport management systems , purpose-built for your workflows." },
+  { icon: Wifi, t: "Remote access", d: "Manage inventory and shipments from anywhere , no VPN headaches, no friction." },
+  { icon: Eye, t: "Real-time visibility", d: "Live dashboards for every pallet, container, and truck on the move." },
+  { icon: KeyRound, t: "Client login privileges", d: "Secure, role-based portal access for your team and authorized partners." },
+  { icon: Clock4, t: "Open 24 hours a day", d: "Dispatch, dock, and customer service operating around the clock , 365 days a year." },
+];
+
+const testimonials = [
+  {
+    type: "Customer",
+    name: "Marcus T.",
+    role: "Director of Supply Chain, consumer brand",
+    quote:
+      "Conquer Nation feels like an extension of our team. They flagged a port delay before it ever hit our inbox and rerouted the load the same morning. That kind of ownership is rare.",
+    rating: 5,
+  },
+  {
+    type: "Customer",
+    name: "Priya S.",
+    role: "Founder, e-commerce apparel",
+    quote:
+      "Switched our 3PL to Conquer Nation last year. Pick accuracy is now at 99.8% and our customer complaints dropped overnight. The portal is honestly better than what our old enterprise provider had.",
+    rating: 5,
+  },
+  {
+    type: "Driver",
+    name: "Hector R.",
+    role: "Owner-operator, 12 years on the road",
+    quote:
+      "Best dispatch I've worked with. Loads are pre-planned, paperwork is digital, and when something goes sideways someone actually picks up the phone. They treat drivers like partners.",
+    rating: 5,
+  },
+  {
+    type: "Customer",
+    name: "Jessica K.",
+    role: "Operations Manager, food & beverage importer",
+    quote:
+      "Their food-grade and hazmat compliance is top tier. We get full traceability from port to shelf and a single dedicated rep who knows our SKUs cold.",
+    rating: 5,
+  },
+  {
+    type: "Driver",
+    name: "Daniel A.",
+    role: "Company driver, regional flatbed",
+    quote:
+      "Trucks are well-maintained, hours are respected, and home time is real. Conquer Nation walks the talk when they say drivers come first.",
+    rating: 5,
+  },
+];
+
 function HomePage() {
   return (
     <PageShell>
@@ -62,7 +114,7 @@ function HomePage() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-glow opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-glow" />
                 </span>
-                Live across North America
+                Live across America
               </span>
             </Reveal>
             <Reveal delay={120}>
@@ -227,6 +279,95 @@ function HomePage() {
               </div>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* CAPABILITIES */}
+      <section className="relative overflow-hidden border-y border-border bg-muted/40 py-24 sm:py-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Capabilities</p>
+              <h2 className="mt-3 text-4xl font-semibold sm:text-5xl">
+                Built on tech that <span className="text-gradient">never sleeps.</span>
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Exceptional systems and round-the-clock operations , so your freight keeps moving and your team stays in the loop.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {capabilities.map((c, i) => (
+              <Reveal key={c.t} delay={i * 70}>
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-7 hover-lift">
+                  <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-primary opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-25" />
+                  <div className="relative">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-primary text-primary-foreground shadow-soft transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
+                      <c.icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-5 text-xl font-semibold">{c.t}</h3>
+                    <p className="mt-2 text-muted-foreground leading-relaxed">{c.d}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        <div className="absolute inset-0 bg-gradient-mesh opacity-50" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <Reveal>
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">What people say</p>
+                <h2 className="mt-3 text-4xl font-semibold sm:text-5xl">
+                  Loved by shippers. <span className="text-gradient">Respected by drivers.</span>
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Real reviews from the people who run their supply chains with us , and the drivers who deliver them.
+                </p>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <div className="flex">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <span><span className="font-semibold text-foreground">4.9 / 5</span> across 200+ reviews</span>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} delay={i * 80}>
+                <figure className="relative flex h-full flex-col rounded-2xl border border-border bg-card p-7 hover-lift">
+                  <Quote className="h-7 w-7 text-primary/40" />
+                  <div className="mt-3 flex">
+                    {Array.from({ length: t.rating }).map((_, idx) => (
+                      <Star key={idx} className="h-4 w-4 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <blockquote className="mt-4 flex-1 text-foreground/90 leading-relaxed">
+                    "{t.quote}"
+                  </blockquote>
+                  <figcaption className="mt-6 flex items-center justify-between border-t border-border pt-4">
+                    <div>
+                      <p className="font-semibold text-foreground">{t.name}</p>
+                      <p className="text-sm text-muted-foreground">{t.role}</p>
+                    </div>
+                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                      {t.type}
+                    </span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
